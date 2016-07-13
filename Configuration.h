@@ -9,7 +9,7 @@
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
 #define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "(FOLGER TECH, KosselRevB)" // Who made the changes. ("Blomker" only edited the parametric values in the sketch. Author name is maintain as jcrocholl to indicate source of this sketch, and credit to where it is due)
+#define STRING_CONFIG_H_AUTHOR "(FOLGER TECH, KosselRevB Atoms)" // Who made the changes. ("Blomker" only edited the parametric values in the sketch. Author name is maintain as jcrocholl to indicate source of this sketch, and credit to where it is due)
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
 // This allows the connection of wireless adapters (for instance) to non-default port pins.
@@ -83,16 +83,16 @@
 #define DELTA_SEGMENTS_PER_SECOND 200
 
 // Center-to-center distance of the holes in the diagonal push rods.
-#define DELTA_DIAGONAL_ROD 240 // mm (215)
+#define DELTA_DIAGONAL_ROD 229 // mm (215)
 
 // Horizontal offset from middle of printer to smooth rod center.
-#define DELTA_SMOOTH_ROD_OFFSET 189// mm (137.0  187) 
+#define DELTA_SMOOTH_ROD_OFFSET 178// mm (137.0  187)
 
 // Horizontal offset of the universal joints on the end effector.
 #define DELTA_EFFECTOR_OFFSET 25// mm (19.9)
 
 // Horizontal offset of the universal joints on the carriages.
-#define DELTA_CARRIAGE_OFFSET 20 // mm (19.5)
+#define DELTA_CARRIAGE_OFFSET 12.0 // mm (19.5)
 
 // Effective horizontal distance bridged by diagonal push rods.
 #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-DELTA_EFFECTOR_OFFSET-DELTA_CARRIAGE_OFFSET)
@@ -343,7 +343,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // For deltabots this means top and center of the cartesian print volume.
 #define MANUAL_X_HOME_POS 0
 #define MANUAL_Y_HOME_POS 0
-#define MANUAL_Z_HOME_POS 315// For delta: Distance between nozzle and print surface after homing.
+#define MANUAL_Z_HOME_POS 217// For delta: Distance between nozzle and print surface after homing.
 
 #define AUTOLEVEL_GRID 15
 // 26 Distance between autolevel Z probing points, should be less than print surface radius/3.
@@ -390,8 +390,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //#define EEPROM_CHITCHAT
 
 // Preheat Constants
-#define PLA_PREHEAT_HOTEND_TEMP 185
-#define PLA_PREHEAT_HPB_TEMP 70
+#define PLA_PREHEAT_HOTEND_TEMP 210
+#define PLA_PREHEAT_HPB_TEMP 40
 #define PLA_PREHEAT_FAN_SPEED 255   // Insert Value between 0 and 255
 
 #define ABS_PREHEAT_HOTEND_TEMP 230
@@ -573,7 +573,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // leaving it undefined or defining as 0 will disable the servo subsystem
 // If unsure, leave commented / disabled
 //
-#define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
+//#define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
 
 // Servo Endstops
 //
