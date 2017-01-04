@@ -9,7 +9,7 @@
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
 #define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "(FOLGER TECH, KosselRevB Atoms)" // Who made the changes. ("Blomker" only edited the parametric values in the sketch. Author name is maintain as jcrocholl to indicate source of this sketch, and credit to where it is due)
+#define STRING_CONFIG_H_AUTHOR "(FOLGER TECH, KosselRevB Atoms github)" // Who made the changes. ("Blomker" only edited the parametric values in the sketch. Author name is maintain as jcrocholl to indicate source of this sketch, and credit to where it is due)
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
 // This allows the connection of wireless adapters (for instance) to non-default port pins.
@@ -98,12 +98,25 @@
 #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-DELTA_EFFECTOR_OFFSET-DELTA_CARRIAGE_OFFSET)
 
 // Effective X/Y positions of the three vertical towers.
+
+#define SIN_58 0.8480480961564259
+#define COS_58 0.5299192642332049
+#define SIN_59 0.8571673007021122
+#define COS_59 0.5150380749100542
+
 #define SIN_60 0.8660254037844386
 #define COS_60 0.5
-#define DELTA_TOWER1_X -SIN_60*DELTA_RADIUS // front left tower
-#define DELTA_TOWER1_Y -COS_60*DELTA_RADIUS
-#define DELTA_TOWER2_X SIN_60*DELTA_RADIUS // front right tower
-#define DELTA_TOWER2_Y -COS_60*DELTA_RADIUS
+
+#define SIN_61 0.8746197071393958
+#define COS_61 0.4848096202463370
+#define SIN_62 0.8829475928589269
+#define COS_62 0.4694715627858907
+
+
+#define DELTA_TOWER1_X -SIN_61*DELTA_RADIUS // front left tower
+#define DELTA_TOWER1_Y -COS_61*DELTA_RADIUS
+#define DELTA_TOWER2_X SIN_61*DELTA_RADIUS // front right tower
+#define DELTA_TOWER2_Y -COS_61*DELTA_RADIUS
 #define DELTA_TOWER3_X 0.0 // back middle tower
 #define DELTA_TOWER3_Y DELTA_RADIUS
 
@@ -249,7 +262,7 @@
 //if PREVENT_DANGEROUS_EXTRUDE is on, you can still disable (uncomment) very long bits of extrusion separately.
 #define PREVENT_LENGTHY_EXTRUDE
 
-#define EXTRUDE_MINTEMP 150
+#define EXTRUDE_MINTEMP 170
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
@@ -278,13 +291,13 @@
   #define ENDSTOPPULLUP_ZMAX
   #define ENDSTOPPULLUP_XMIN
   #define ENDSTOPPULLUP_YMIN
-  //#define ENDSTOPPULLUP_ZMIN
+  #define ENDSTOPPULLUP_ZMIN
 #endif
 
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
-const bool X_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
-const bool Y_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
-const bool Z_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
+const bool X_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
+const bool Y_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
+const bool Z_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
 const bool X_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
 const bool Y_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
 const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
@@ -343,16 +356,16 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // For deltabots this means top and center of the cartesian print volume.
 #define MANUAL_X_HOME_POS 0
 #define MANUAL_Y_HOME_POS 0
-#define MANUAL_Z_HOME_POS 217// For delta: Distance between nozzle and print surface after homing.
+#define MANUAL_Z_HOME_POS 244// For delta: Distance between nozzle and print surface after homing.
 
-#define AUTOLEVEL_GRID 15
+#define AUTOLEVEL_GRID 20.5 //20x4 80/testing radio
 // 26 Distance between autolevel Z probing points, should be less than print surface radius/3.
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
 #define HOMING_FEEDRATE {80*60, 80*60, 80*60, 0}  // set the homing speeds (mm/min)
 
 #define Z_RAISE_BETWEEN_PROBING=20
-#define Z_PROBE_OFFSET {0,0,-.6,0}  // (0, 14, -6.5, 0){24.6,-21,0,0}{24.6,-21,0,0} X, Y, Z, E distance between hotend nozzle and deployed bed leveling probe.(0,19,-8,0)
+#define Z_PROBE_OFFSET {0,-30,-.3,0}  // (0, 14, -6.5, 0){24.6,-21,0,0}{24.6,-21,0,0} X, Y, Z, E distance between hotend nozzle and deployed bed leveling probe.(0,19,-8,0)
 
 // default settings
 
@@ -573,7 +586,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // leaving it undefined or defining as 0 will disable the servo subsystem
 // If unsure, leave commented / disabled
 //
-//#define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
+#define NUM_SERVOS 1 // Servo index starts with 0 for M280 command
 
 // Servo Endstops
 //
@@ -581,7 +594,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // Use M206 command to correct for switch height offset to actual nozzle height. Store that setting with M500.
 //
 //#define SERVO_ENDSTOPS {-1, -1, 0} // Servo index for X, Y, Z. Disable with -1
-//#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 70,0} // X,Y,Z Axis Extend and Retract angles
+#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 5,120} // X,Y,Z Axis Extend and Retract angles
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
