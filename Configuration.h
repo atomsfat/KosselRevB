@@ -89,7 +89,7 @@
 #define DELTA_SMOOTH_ROD_OFFSET 178// mm (137.0  187)
 
 // Horizontal offset of the universal joints on the end effector.
-#define DELTA_EFFECTOR_OFFSET 25// mm (19.9)
+#define DELTA_EFFECTOR_OFFSET 25 // mm (19.9)
 
 // Horizontal offset of the universal joints on the carriages.
 #define DELTA_CARRIAGE_OFFSET 12.0 // mm (19.5)
@@ -164,7 +164,7 @@
 // Actual temperature must be close to target for this long before M109 returns success
 #define TEMP_RESIDENCY_TIME 10  // (seconds)
 #define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
-#define TEMP_WINDOW     2       // (degC) Window around target to start the residency timer x degC early.
+#define TEMP_WINDOW     1       // (degC) Window around target to start the residency timer x degC early.
 
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
 // to check that the wiring to the thermistor is not broken.
@@ -203,9 +203,9 @@
 
 // If you are using a preconfigured hotend then you can use one of the value sets by uncommenting it
 // Ultimaker
-    #define  DEFAULT_Kp 21.42
-    #define  DEFAULT_Ki 1.42
-    #define  DEFAULT_Kd 80.73
+    #define  DEFAULT_Kp 22.2
+    #define  DEFAULT_Ki 1.08
+    #define  DEFAULT_Kd 114
 
 // Makergear
 //    #define  DEFAULT_Kp 7.0
@@ -365,16 +365,16 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define HOMING_FEEDRATE {80*60, 80*60, 80*60, 0}  // set the homing speeds (mm/min)
 
 #define Z_RAISE_BETWEEN_PROBING=20
-#define Z_PROBE_OFFSET {0,-30,-.3,0}  // (0, 14, -6.5, 0){24.6,-21,0,0}{24.6,-21,0,0} X, Y, Z, E distance between hotend nozzle and deployed bed leveling probe.(0,19,-8,0)
+#define Z_PROBE_OFFSET {0,12,5,-.3,0}  // (0, 14, -6.5, 0){24.6,-21,0,0}{24.6,-21,0,0} X, Y, Z, E distance between hotend nozzle and deployed bed leveling probe.(0,19,-8,0)
 
 // default settings
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 80, 100}
-#define DEFAULT_MAX_FEEDRATE          {2500, 2500, 2500, 300}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {5000,5000,5000,1000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_FEEDRATE          {300, 300, 300, 300}    // (mm/sec)
+#define DEFAULT_MAX_ACCELERATION      {1000,1000,1000,1000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
-#define DEFAULT_ACCELERATION          2000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  8000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
+#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  3000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
 
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
@@ -383,9 +383,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // #define EXTRUDER_OFFSET_Y {0.0, 5.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
 
 // The speed change that does not require acceleration (i.e. the software might assume it can be done instantaneously)
-#define DEFAULT_XYJERK                5.0    // (mm/sec)
-#define DEFAULT_ZJERK                 5.0    // (mm/sec)
-#define DEFAULT_EJERK                 5.0    // (mm/sec)
+#define DEFAULT_XYJERK                20.0    // (mm/sec)
+#define DEFAULT_ZJERK                 20.0    // (mm/sec)
+#define DEFAULT_EJERK                 20.0    // (mm/sec)
 
 //===========================================================================
 //=============================Additional Features===========================
@@ -408,7 +408,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define PLA_PREHEAT_FAN_SPEED 255   // Insert Value between 0 and 255
 
 #define ABS_PREHEAT_HOTEND_TEMP 230
-#define ABS_PREHEAT_HPB_TEMP 100
+#define ABS_PREHEAT_HPB_TEMP 80
 #define ABS_PREHEAT_FAN_SPEED 255   // Insert Value between 0 and 255
 
 //LCD and SD support
